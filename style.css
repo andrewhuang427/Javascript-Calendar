@@ -1,0 +1,363 @@
+html, body {
+    color: white;
+    background-color: rgb(21, 32, 43);
+}
+
+nav {
+    background-color: rgb(21, 32, 43);
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+    height: 80px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.date-container {
+    position: absolute;
+    left: 25%;
+}
+
+.date-container div {
+    display: inline-block;
+}
+
+.month-nav {
+    margin: auto 20px;
+}
+
+.month-nav button {
+    color: white;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255, 0.2);
+}
+
+.month-nav button:focus {
+    outline: none;
+}
+
+.month-nav i {
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.navigation-links {
+    position: absolute;
+    left: 80%;
+}
+
+.navigation-links button {
+    display: inline-block;
+    padding: 10px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+/* ----- Log-In Modal ----- */
+
+#login-modal input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#register-modal input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-title {
+    margin: 20px;
+}
+
+.modal-content {
+    overflow: hidden;
+    background-color: white;
+    margin: 5% auto 15% auto;
+    width: 60%;
+}
+
+.modal-container {
+    padding: 16px;
+}
+
+.modal button {
+    padding: 5px 20px;
+    border-radius: 3px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.login-button {
+    color: rgb(43, 156, 43);
+    border: 1px solid rgb(43, 156, 43);
+}
+
+.cancel-button {
+    color: rgb(255, 75, 75);
+    border: 1px solid rgb(255, 75, 75);
+}
+
+.modal-buttons {
+    margin: 20px;
+}
+
+.content {
+    margin-top: 80px;
+}
+
+/* ----- Create and Edit Events Modal ----- */
+
+.event-title-container {
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.event-title-container input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    box-sizing: border-box;
+}
+
+.event-date-time-container {
+    margin: 30px auto;
+}
+
+.event-time-label {
+    margin-left: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    border-style: none;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    resize: none;
+}
+
+.category-container {
+    margin-top: 20px
+}
+
+/* ----- Side Bar ----- */
+
+.side-bar {
+    border-right: 1px solid rgb(255, 255, 255, 0.2);
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.new-event-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new-event {
+    border: none;
+    background-color: rgb(0, 134, 179);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.add-icon {
+    margin-left: 10px;
+}
+
+.new-event:hover {
+    background-color: rgb(0, 168, 224);
+}
+
+/* ----- Event Filter ----- */
+
+.filter-title {
+    margin: 20px auto;
+}
+
+.events-filter {
+    margin: 50px auto 50px 50px;
+}
+
+.radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.radio-container:hover input~.checkmark {
+    background-color: rgba(204, 204, 204, 0.788);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.radio-container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* ----- Calendar ----- */
+
+.calendar {
+    margin-left: 300px;
+}
+
+.day-name-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.day-name-row .day-box {
+    padding: 5px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.day-name-row .day-box-last {
+    padding: 5px;
+    text-align: center;
+}
+
+.date-row {
+    height: 117.5px;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+.date-row .date-box {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.date-box {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.date-box:hover, .date-box-last:hover {
+    background-color: rgb(255, 255, 255, 0.05);
+}
+
+.cell-events-list {
+    width: 100%;
+}
+
+.events-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.events-list li {
+    display: block;
+    text-align: center;
+    margin: 4px auto;
+    padding: 1px;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+.events-list li:hover {
+    cursor: pointer;
+    color: black;
+    background-color: rgb(207, 207, 207);
+}
+
+.All {
+    background-color: rgb(156, 156, 0);
+}
+
+.General {
+    background-color: rgb(100, 0, 0);
+}
+
+.Home {
+    background-color: rgb(0, 119, 0);
+}
+
+.Work {
+    background-color: rgb(156, 102, 0);
+}
+
+.Activity {
+    background-color: rgb(141, 0, 141);
+}
+
+.Family {
+    background-color: rgb(0, 134, 179)
+}

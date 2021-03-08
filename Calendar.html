@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar</title>
+    <link rel="shortcut icon" href="calendar-icon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand" href="#">
+            <h4>Javascript Calendar</h4>
+        </a>
+        <div class="date-container">
+            <div class="month-nav">
+                <button><i class="fa fa-arrow-left" aria-hidden="true" id="previous-month-btn"></i></button>
+                <button><i class="fa fa-arrow-right" aria-hidden="true" id="next-month-btn"></i></button>
+            </div>
+            <div class="date">
+                <div class="month-container">
+                    <h4 id="current-month">Month</h4>
+                </div>
+                <div class="year-container">
+                    <h4 id="current-year">Year</h4>
+                </div>
+            </div>
+        </div>
+        <div class="navigation-links">
+            <div class="nav-button-container">
+                <button class="btn btn-outline-success my-2 ml-2 my-sm-0" id="login-modal-opener"
+                    style="width:auto;">Login</button>
+            </div>
+            <div class="nav-button-container">
+                <button class="btn btn-outline-success my-2 ml-2 my-sm-0" id="register-modal-opener"
+                    style="width:auto;">Register</button>
+            </div>
+            <div class="nav-button-container">
+                <button class="btn btn-outline-success my-2 ml-2 my-sm-0" id="logout-btn"
+                    style="width:auto; visibility: hidden;">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="login-modal" class="modal">
+        <form class="modal-content">
+            <div class="modal-title">
+                <h3>Login</h3>
+            </div>
+            <div class="modal-container">
+                <label for="username"><b>Username</b></label>
+                <input type="text" id="username" placeholder="Enter Username" name="username">
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="password" placeholder="Enter Password" name="password">
+            </div>
+            <div class="modal-buttons">
+                <button type="button" id="login-btn" class="login-button">Login</button>
+                <button type="button" id="login-modal-closer" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="register-modal" class="modal">
+        <form class="modal-content">
+            <div class="modal-title">
+                <h3>Register</h3>
+            </div>
+            <div class="modal-container">
+                <div class="modal-field">
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" id="register-username" placeholder="Enter Username" name="username">
+                </div>
+                <div class="modal-field">
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" id="register-password" placeholder="Enter Password" name="password">
+                </div>
+                <div class="modal-field">
+                    <label for="confirmation-password"><b>Confirm Password</b></label>
+                    <input type="password" id="confirmation-password" placeholder="Enter Password"
+                        name="confirm-password">
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" id="register-btn" class="login-button">Register</button>
+                <button type="button" id="register-modal-closer" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="new-event-modal" class="modal">
+        <form class="modal-content" id="new-event-form">
+            <div class="modal-container">
+                <div class="event-title-container">
+                    <input type="text" id="event-title" placeholder="Enter Event Title" name="event-title">
+                </div>
+                <div class="event-date-time-container">
+                    <label for="event-date">Event Date:</label>
+                    <input type="date" id="event-date" name="event-date" value="">
+                    <label class="event-time-label" for="event-time">Event Time: </label>
+                    <input type="time" id="event-time" name="event-time" value="12:00">
+                </div>
+                <div class="event-textarea-container">
+                    <textarea id="event-description" name="comment" form="new-event-form"
+                        placeholder="Event description"></textarea>
+                </div>
+                <div class="category-container">
+                    <label for="event-category">Choose category:</label>
+                    <select id="event-category" name="event-category">
+                        <option value="General">General</option>
+                        <option value="Home">Home</option>
+                        <option value="Work">Work</option>
+                        <option value="Activity">Activity</option>
+                        <option value="Family">Family</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" id="create-event-btn" class="login-button">Create</button>
+                <button type="button" id="create-event-modal-closer" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="edit-event-modal" class="modal">
+        <form class="modal-content" id="edit-event-form">
+            <div class="modal-container">
+                <div class="event-title-container">
+                    <input type="text" id="edit-event-title" placeholder="Enter Event Title" name="event-title">
+                </div>
+                <div class="event-date-time-container">
+                    <label for="event-date">Event Date:</label>
+                    <input type="date" id="edit-event-date" name="event-date" value=""><br>
+                    <label class="event-time-label" for="event-time">Event Time: </label>
+                    <input type="time" id="edit-event-time" name="event-time" value="12:00"><br>
+                </div>
+                <div class="event-textarea-container">
+                    <textarea id="edit-event-description" name="comment" form="edit-event-form"
+                        placeholder="Event description"></textarea><br>
+                </div>
+                <div class="category-container">
+                    <label for="event-category">Choose category:</label>
+                    <select id="edit-event-category" name="event-category">
+                        <option value="General">General</option>
+                        <option value="Home">Home</option>
+                        <option value="Work">Work</option>
+                        <option value="Activity">Activity</option>
+                        <option value="Family">Family</option>
+                    </select>
+                </div>
+                <input type="hidden" id="hidden-event-id">
+            </div>
+            <div class="modal-buttons">
+                <button type="button" id="save-event-btn" class="login-button">Save</button>
+                <button type="button" id="delete-event-btn" class="login-button">Delete</button>
+                <button type="button" id="edit-event-modal-closer" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="content container-fluid">
+        <div class="side-bar">
+            <div class="user-container container my-4 justify-content-center text-center">
+                <h5 class="user-container-heading" id="username-heading">Username</h5>
+            </div>
+            <div class="new-event-container">
+                <button class="new-event" id="create-event-modal-opener">
+                    New Event
+                    <i class="add-icon fas fa-plus-square"></i>
+                </button>
+            </div>
+            <div class="events-filter">
+                <div class="filter-title">
+                    <h4>Filter Events</h4>
+                </div>
+                <div class="filter-form">
+                    <form>
+                        <label class="radio-container">All
+                            <input type="radio" checked="checked" value="All" name="filter">
+                            <span class="checkmark All"></span>
+                        </label>
+                        <label class="radio-container">General
+                            <input type="radio" value="General" name="filter">
+                            <span class="checkmark General"></span>
+                        </label>
+                        <label class="radio-container">Home
+                            <input type="radio" value="Home" name="filter">
+                            <span class="checkmark Home"></span>
+                        </label>
+                        <label class="radio-container">Work
+                            <input type="radio" value="Work" name="filter">
+                            <span class="checkmark Work"></span>
+                        </label>
+                        <label class="radio-container">Activity
+                            <input type="radio" value="Activity" name="filter">
+                            <span class="checkmark Activity"></span>
+                        </label>
+                        <label class="radio-container">Family
+                            <input type="radio" value="Family" name="filter">
+                            <span class="checkmark Family"></span>
+                        </label>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="calendar" id="calendar">
+            <div class="day-name-row row">
+                <div class="day-box col">Sun</div>
+                <div class="day-box col">Mon</div>
+                <div class="day-box col">Tue</div>
+                <div class="day-box col">Wed</div>
+                <div class="day-box col">Thu</div>
+                <div class="day-box col">Fri</div>
+                <div class="day-box-last col">Sat</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="login.js"></script>
+    <script src="modal.js"></script>
+    <script src="events.js"></script>
+    <script src="calendar.js"></script>
+
+</body>
+
+</html>
