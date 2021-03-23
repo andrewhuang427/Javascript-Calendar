@@ -14,10 +14,3 @@ For the second creative feature, I implemented feature allowing users to associa
 ### Feature 3
 For the third creative improvement, I implemented several features to improve the UI. Firstly, I implemented the ability for users to create new events from clicking the Calendar cells. When users are logged in, they can click on specific cells of the calendar to open the "New Event Form". Once the form opens, it is auto populated with the date of whatever cell the user clicked on. Secondly, using the DOM, I also was able to color code the events to make it easier for the user to tell which category each event is in. The class tags containing the specific background-color are added to the classLists using JavaScript when creating the event objects.  
   
-Grading Comments:  
--2 users cannot manipulate events created by other users. There is no server-side check for this when modifying and deleting events.  
--2 code is well formatted and easy to read: used "var" throughout and comments are sparse  
--3 session cookie not http only  
--2 doesn't pass validation (stray start tag nav)  
--1 usability: some events don't appear until after another event is created  
--3.5 creative. Gave 6.5 points for event tags. This would be worth 7.5, but I wasn't able to edit the event tag. Also gave 5 points for the UI improvements. UI wouldn't usually be worth this much but I gave you 5 because there was some technical complexity.
